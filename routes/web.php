@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,3 +25,8 @@ Route::post('/storeUser', [UserController::class, 'store']);
 Route::get('/editUser/{id}', [UserController::class, 'edit']);
 Route::post('/updateUser/{id}', [UserController::class, 'update']);
 Route::get('/deleteUser/{id}', [UserController::class, 'destroy']);
+Auth::routes();
+
+Route::resource('posts', PostController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

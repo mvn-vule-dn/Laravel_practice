@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -10,6 +12,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->authorizeResource(Post::class,'post');
     }
 
     /**
@@ -20,6 +23,7 @@ class PostController extends Controller
     public function index()
     {
         //
+        // $this->authorize('viewAny',User::class);
         return "Can view posts";
     }
 
@@ -31,6 +35,7 @@ class PostController extends Controller
     public function create()
     {
         //
+
         return "Can create post";
     }
 
@@ -51,7 +56,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
         //
         return "Can view detail post";
@@ -63,7 +68,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
         //
         return "Can edit post";
@@ -87,7 +92,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
         //
         return "Can delete post";

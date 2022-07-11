@@ -29,4 +29,6 @@ Auth::routes();
 
 Route::resource('posts', PostController::class);
 
+Route::get('deletePost/{post}', [PostController::class, 'destroy'])->middleware(['can:delete,post']);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

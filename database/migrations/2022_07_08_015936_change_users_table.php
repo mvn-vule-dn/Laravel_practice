@@ -15,8 +15,8 @@ class ChangeUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('role')->after('password')->default(1);
-            $table->integer('status')->after('role')->default(1);
+            $table->integer('role')->after('password');
+            $table->integer('status')->after('role');
         });
     }
 

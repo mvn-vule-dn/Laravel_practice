@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -20,7 +21,12 @@ class PostController extends Controller
     public function index()
     {
         //
-        return "Can view posts";
+        if (Gate::allows('view-all-post')){
+            return "Can view posts";
+        }
+        else {
+            return "Can't view posts";
+        }
     }
 
     /**
@@ -31,7 +37,12 @@ class PostController extends Controller
     public function create()
     {
         //
-        return "Can create post";
+        if (Gate::allows('create-post')){
+            return "Can create post";
+        }
+        else {
+            return "Can't create post";
+        }
     }
 
     /**
